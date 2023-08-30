@@ -1,0 +1,44 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.sidebar {
+    .app-logo {
+        display: block;
+    }
+    .contracted-app-logo {
+        display: none;
+    }
+}
+
+.sidebar.contracted {
+    .app-logo {
+        display: none;
+    }
+    .contracted-app-logo {
+        display: block;
+        margin-right: 145px;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 0.5rem;
+    background: #eee;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    background: #bbb;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
