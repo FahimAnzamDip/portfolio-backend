@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UploadsController;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     /**
         Dashboard
      **/
-    Route::get('/dashboard', function () {
-        return view('backend.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     /**
         Admin Profile
