@@ -41,7 +41,7 @@ class ProfileController extends Controller
         $request->user()->save();
 
         if ($request->input('image')) {
-            $this->upload_service->uploadFile(auth()->user(), $request->input('image'));
+            $this->upload_service->uploadImage(auth()->user(), $request->input('image'));
         }
 
         toast('Profile Updated!', 'info');

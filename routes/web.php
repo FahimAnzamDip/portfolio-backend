@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AboutsController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UploadsController;
@@ -38,6 +39,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         ->name('filepond.upload');
     Route::delete('/filepond/delete', [UploadsController::class, 'filepondDelete'])
         ->name('filepond.delete');
+
+    /**
+        About
+     **/
+    Route::get('/abouts', [AboutsController::class, 'index'])->name('abouts.index');
+    Route::put('/abouts', [AboutsController::class, 'update'])->name('abouts.update');
 });
 
 

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class UploadService
 {
 
-    public function uploadFile($model, $image) {
+    public function uploadImage($model, $image, $collection_name = 'default') {
         $tempFile = Upload::where('folder', $image)->first();
 
         if ($model->getFirstMedia()) {
@@ -16,7 +16,8 @@ class UploadService
         }
 
         if ($tempFile) {
-            auth()->user()->addMedia(Storage::path('temp/' . $image . '/' . $tempFile->filename))->toMediaCollection();
+            auth()->user()->addMedia(Storage::path('temp/' . $image . '/' . $tempFile->filename))
+                ->toMediaCollection($collection_name);
 
             Storage::deleteDirectory('temp/' . $image);
             $tempFile->delete();

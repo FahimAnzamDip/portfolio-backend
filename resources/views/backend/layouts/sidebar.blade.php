@@ -69,12 +69,21 @@
             <li role="separator" class="dropdown-divider mb-4 border-gray-800 border-4 rounded"></li>
 
             <!-- Menu Start -->
-            <li class="nav-item active">
+            <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}" class="nav-link d-flex align-items-center">
                         <span class="sidebar-icon d-flex align-items-center">
                             <i class="bi bi-bounding-box"></i>
                         </span>
                     <span class="sidebar-text d-inline-block">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item {{ request()->routeIs('abouts*') ? 'active' : '' }}">
+                <a href="{{ route('abouts.index') }}" class="nav-link d-flex align-items-center">
+                        <span class="sidebar-icon d-flex align-items-center">
+                            <i class="bi bi-bounding-box"></i>
+                        </span>
+                    <span class="sidebar-text d-inline-block">Abouts</span>
                 </a>
             </li>
             <!-- Menu End -->
