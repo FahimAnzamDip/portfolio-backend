@@ -44,7 +44,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
         About
      **/
     Route::get('/abouts', [AboutsController::class, 'index'])->name('abouts.index');
-    Route::put('/abouts', [AboutsController::class, 'update'])->name('abouts.update');
 });
 
 

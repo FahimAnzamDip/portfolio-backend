@@ -18,10 +18,25 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
+    @stack('third_party_styles')
+
     <!-- Scripts -->
     @vite(['resources/scss/style.scss', 'resources/js/app.js'])
 
+    @livewireStyles
+
     @stack('page_css')
+
+    <style>
+        #nprogress {
+            .bar {
+                z-index: 2000 !important;
+            }
+            .spinner {
+                z-index: 2000 !important;
+            }
+        }
+    </style>
 </head>
 <body>
 <div class="position-fixed bg-primary bg-pattern-1 w-100 fmxh-300 z--1"></div>
@@ -29,7 +44,7 @@
 @include('backend.layouts.sidebar')
 
 <!-- Main Content Start -->
-<main class="content d-flex flex-column justify-content-between" style="min-height: 100vh;">
+<main class="content d-flex flex-column justify-content-between min-vh-100">
     <div class="upper-section">
         @include('backend.layouts.topbar')
 
@@ -42,7 +57,12 @@
 </main>
 <!-- Main Content End -->
 
+<!-- jquery cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 @include('sweetalert::alert')
+
+@livewireScripts
 
 @stack('page_js')
 </body>

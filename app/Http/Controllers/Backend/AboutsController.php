@@ -16,8 +16,4 @@ class AboutsController extends Controller
             'abouts' => $abouts
         ]);
     }
-
-    public function update(Request $request, $id) {
-
-    }
 }

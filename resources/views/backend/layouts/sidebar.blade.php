@@ -59,7 +59,7 @@
         <ul class="nav flex-column pt-3 pt-md-0">
             <!-- Logo Start -->
             <li class="nav-item">
-                <a href="index.html" class="nav-link d-flex align-items-center justify-content-center">
+                <a href="{{ route('dashboard') }}" class="nav-link d-flex align-items-center justify-content-center">
                     <img class="app-logo" width="100" src="{{ asset('backend/images/app-logo.png') }}" alt="App Logo">
                     <img class="contracted-app-logo" width="50" src="{{ asset('backend/images/app-logo.png') }}" alt="App Logo">
                 </a>
@@ -81,9 +81,9 @@
             <li class="nav-item {{ request()->routeIs('abouts*') ? 'active' : '' }}">
                 <a href="{{ route('abouts.index') }}" class="nav-link d-flex align-items-center">
                         <span class="sidebar-icon d-flex align-items-center">
-                            <i class="bi bi-bounding-box"></i>
+                            <i class="bi bi-file-earmark-person"></i>
                         </span>
-                    <span class="sidebar-text d-inline-block">Abouts</span>
+                    <span class="sidebar-text d-inline-block">About Info</span>
                 </a>
             </li>
             <!-- Menu End -->
