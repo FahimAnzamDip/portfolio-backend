@@ -59,7 +59,7 @@
                 icon: 'success',
                 title: 'About Info Updated!',
                 showCloseButton: true
-            })
-        })
+            });
+        });
     </script>
 @endpush

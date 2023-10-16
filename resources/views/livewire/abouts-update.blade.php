@@ -1,6 +1,20 @@
 <div>
-    <form wire:submit="update">
+    <form wire:submit="update" enctype="multipart/form-data">
         <div class="row">
+            <div class="col-md-12">
+                <div class="mb-4">
+                    <label for="logo">Logo <span class="text-danger">*</span></label>
+                    <img width="300" class="img-thumbnail rounded d-block mt-2" src="{{ $about_image_url }}" alt="About Image">
+                    <input wire:model="about_image" type="file" name="logo" id="logo" class="w-100 mt-4 form-control">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="mb-4">
+                    <label for="about_image">About Image <span class="text-danger">*</span></label>
+                    <img width="300" class="img-thumbnail rounded d-block mt-2" src="{{ $logo_url }}" alt="Logo">
+                    <input wire:model="logo" type="file" name="about_image" id="about_image" class="w-100 mt-4 form-control">
+                </div>
+            </div>
             <div class="col-md-4">
                 <div class="mb-4">
                     <label for="name">Name <span class="text-danger">*</span></label>
@@ -102,6 +116,10 @@
     </form>
 </div>
 
+@push('page_css')
+
+@endpush
+
 @push('page_js')
     <!-- tinymce js -->
     <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>
@@ -110,13 +128,11 @@
             selector: '#about_content',
             plugins: 'code table lists',
             toolbar: 'undo redo | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
-            // All your init stuff here, then the super important part at the bottom
             setup: function (editor) {
                 editor.on('init change', function () {
                     editor.save();
                 });
 
-                // This section says that when you leave the text edit area, it will set whatever livewire variable you like to the currnt contents
                 editor.on('blur', function (e) {
                     @this.set('about_content', editor.getContent());
                 });
