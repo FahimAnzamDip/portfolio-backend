@@ -4,15 +4,17 @@
             <div class="col-md-12">
                 <div class="mb-4">
                     <label for="logo">Logo <span class="text-danger">*</span></label>
-                    <img width="300" class="img-thumbnail rounded d-block mt-2" src="{{ $about_image_url }}" alt="About Image">
-                    <input wire:model="about_image" type="file" name="logo" id="logo" class="w-100 mt-4 form-control">
+                    <img width="300" class="img-thumbnail rounded d-block mt-2" src="{{ $logo ? $logo->temporaryUrl() : $logo_url }}" alt="About Image">
+                    <div wire:loading wire:target="logo" class="text-primary mt-1 fw-bold">Uploading...</div>
+                    <input wire:model="logo" type="file" name="logo" id="logo" class="w-100 mt-4 form-control">
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="mb-4">
                     <label for="about_image">About Image <span class="text-danger">*</span></label>
-                    <img width="300" class="img-thumbnail rounded d-block mt-2" src="{{ $logo_url }}" alt="Logo">
-                    <input wire:model="logo" type="file" name="about_image" id="about_image" class="w-100 mt-4 form-control">
+                    <img width="300" class="img-thumbnail rounded d-block mt-2" src="{{ $about_image ? $about_image->temporaryUrl() : $about_image_url }}" alt="Logo">
+                    <div wire:loading wire:target="about_image" class="text-primary mt-1 fw-bold">Uploading...</div>
+                    <input wire:model="about_image" type="file" name="about_image" id="about_image" class="w-100 mt-4 form-control">
                 </div>
             </div>
             <div class="col-md-4">

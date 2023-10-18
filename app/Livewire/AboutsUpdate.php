@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Http\Services\UploadService;
 use App\Models\About;
 use Illuminate\Support\Facades\View;
 use Livewire\Attributes\Rule;
@@ -33,6 +34,12 @@ class AboutsUpdate extends Component
     public $logo_url;
     public $about_image_url;
 
+    private UploadService $upload_service;
+
+    public function __construct() {
+        $this->upload_service = new UploadService();
+    }
+
     public function mount($abouts) {
         $this->name = $abouts->name;
         $this->designation = $abouts->designation;
@@ -60,19 +67,17 @@ class AboutsUpdate extends Component
         $about->update($this->except('abouts', 'logo', 'about_image', 'logo_url', 'about_image_url'));
 
         if ($this->logo) {
-            if ($about->getFirstMedia('logo')) {
-                $about->getFirstMedia('logo')->delete();
-            }
+            $this->upload_service->livewireUploadImage($about, $this->logo, 'logo');
 
-            $about->addMedia($this->logo)->toMediaCollection('logo');
+            $this->logo = null;
+            $this->logo_url = About::findOrFail(1)->getFirstMediaUrl('logo');
         }
 
         if ($this->about_image) {
-            if ($about->getFirstMedia('about_image')) {
-                $about->getFirstMedia('about_image')->delete();
-            }
+            $this->upload_service->livewireUploadImage($about, $this->about_image, 'about_image');
 
-            $about->addMedia($this->about_image)->toMediaCollection('about_image');
+            $this->about_image = null;
+            $this->about_image_url = About::findOrFail(1)->getFirstMediaUrl('about_image');
         }
 
         $this->dispatch('abouts-updated');
